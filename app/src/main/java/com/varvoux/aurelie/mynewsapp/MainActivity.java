@@ -15,15 +15,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.configureViewPager();
         this.configureViewPagerAndTabs();
 
 
-    }
-
-    private void configureViewPager(){
-        ViewPager pager = findViewById(R.id.main_activity_viewpager);
-        pager.setAdapter(new ViewPagerAdapter(getSupportFragmentManager()));
     }
 
     private void configureViewPagerAndTabs(){
