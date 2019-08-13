@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.varvoux.aurelie.mynewsapp.R;
 import com.varvoux.aurelie.mynewsapp.retrofit.TravelRequest.TravelDoc;
-import com.varvoux.aurelie.mynewsapp.retrofit.TravelRequest.TravelPojo;
 
 import java.util.List;
 
@@ -22,6 +21,7 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.TravelView
 
     private List<TravelDoc> myList;
     private Context context;
+    private String url = "https://static01.nyt.com/";
 
     public TravelAdapter(List<TravelDoc> myList, Context context) {
         this.myList = myList;
@@ -46,10 +46,8 @@ public class TravelAdapter extends RecyclerView.Adapter<TravelAdapter.TravelView
 
             if (myList.get(position).getMultimedia().size() > 0)
                 Glide.with(context)
-                        .load("https:\\/\\/static01.nyt.com\\/" + myList.get(position).getMultimedia().get(0).getUrl())
-
-                        // chercher la bonne adresse pour les images
-                        // car dans POJO -> images/2019/08/05/world/05hongkong-strike-span/05hongkong-strike-span-watch268.jpg" par ex, & etc
+                        .load(url + myList.get(position).getMultimedia().get(0).getUrl())
+//PENSER A GERER LE FAIT QUAND PAS D'IMAGES -> laisser en blanc ou mettre qq chose ?
                         .placeholder(android.R.drawable.ic_input_add)
                         .circleCrop()
                         .into(holder.mImageView);
